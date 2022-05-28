@@ -4,7 +4,6 @@ import { Typography } from "@mui/material";
 import React from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import apiService from "../app/APIservice";
@@ -31,7 +30,7 @@ function SearchMovie() {
       }
     };
     fetchData();
-  }, []);
+  });
   return (
     <>
       <div>

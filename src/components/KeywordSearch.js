@@ -34,7 +34,7 @@ function SearchMoviesByKeyword() {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  });
   const [page, setPage] = useState(1);
   let limit = 4;
   const movLength = movies?.length;

@@ -32,7 +32,7 @@ function SortMoviesByGenre() {
       }
     };
     fetchData();
-  }, [setMovies, genreID]);
+  }, [setMovies, genreID, api_key, chosenGenre, setError]);
   const [page, setPage] = useState(1);
   let limit = 5;
   const movLength = movies?.results.length;

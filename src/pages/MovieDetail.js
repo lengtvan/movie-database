@@ -25,7 +25,7 @@ function DetailPage() {
       }
     };
     fetchData();
-  }, []);
+  });
   return (
     <div>
       <Card

@@ -38,7 +38,7 @@ export default function Genre() {
       }
     };
     fetchData();
-  }, []);
+  });
   const drawerWidth = 240;
   const Search = styled("div")(({ theme }) => ({
     position: "relative",

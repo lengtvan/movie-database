@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import SearchMoviesByKeyword from "../components/KeywordSearch";
-import MovieByKeywords from "../components/KeywordSearch";
 import { MovProvider } from "../contexts/MovieContext";
 import Homepage from "../pages/Homepage";
 import Layout from "../pages/Layout";
