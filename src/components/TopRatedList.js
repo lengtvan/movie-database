@@ -30,7 +30,7 @@ export default function TopRated() {
       setLoading(false);
     };
     fetchData();
-  });
+  }, [api_key]);
   const [page, setPage] = useState(1);
   let limit = 5;
   const movLength = topRated?.results.length;

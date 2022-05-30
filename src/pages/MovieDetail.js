@@ -25,7 +25,7 @@ function DetailPage() {
       }
     };
     fetchData();
-  });
+  }, [api_key, movieID]);
   return (
     <div>
       <Card

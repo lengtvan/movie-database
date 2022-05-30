@@ -31,7 +31,7 @@ export default function Trending() {
       setLoading(false);
     };
     fetchData();
-  });
+  }, []);
   const [page, setPage] = useState(1);
   let limit = 5;
   const movLength = movies?.results.length;
