@@ -10,7 +10,7 @@ function MovCard({ movie }) {
   const location = useLocation();
   return (
     <Card
-      sx={{ p:"1%", maxWidth:"20%" }}
+      sx={{ p:"1%", width:"20%" }}
       onClick={() =>
         navigate(`/movie/${movie.id}`, { state: { from: location } })
       }
