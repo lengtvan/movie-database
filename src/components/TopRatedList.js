@@ -65,7 +65,7 @@ export default function TopRated() {
           {topRated?.results
             .slice(limit * (page - 1), limit * page)
             .map((movie, index) => (
-              <Grid key={movie.id} item xs={4} md={3} lg={2}>
+              <Grid key={movie.id} item xs={3} md={2} lg={1}>
                 <MovCard movie={movie} />
               </Grid>
             ))}
