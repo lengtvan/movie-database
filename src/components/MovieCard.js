@@ -10,12 +10,12 @@ function MovCard({ movie }) {
   const location = useLocation();
   return (
     <Card
-      sx={{ p:"1%"}}
+      sx={{ p:"16px"}}
       onClick={() =>
         navigate(`/movie/${movie.id}`, { state: { from: location } })
       }
     >
-      <ImageListItem key={movie.id} sx={{ height: "50%" }}>
+      <ImageListItem key={movie.id} sx={{ maxHeight: "30%" }}>
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt={movie.title}
