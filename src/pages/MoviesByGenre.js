@@ -10,6 +10,8 @@ import { useState } from "react";
 import { Box } from "@mui/material";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import TopRated from "../components/TopRatedList";
+import Trending from "../components/TrendingList";
 
 function SortMoviesByGenre() {
   let params = useParams();
@@ -49,7 +51,7 @@ function SortMoviesByGenre() {
   };
   return (
     <>
-      <Typography variant="h2" mt={4} p="16px" ml={8}>
+      <Typography variant="h2" mt={12} p="16px" ml={8}>
         {chosenGenre}
       </Typography>
       <Box>
@@ -67,7 +69,7 @@ function SortMoviesByGenre() {
           {movies?.results
             .slice(limit * (page - 1), limit * page)
             .map((movie, index) => (
-              <Grid key={movie.id} item xs={3} md={2} lg={1}>
+              <Grid key={movie.id} item xs={1} sm={2} >
                 <MovCard movie={movie} />
               </Grid>
             ))}
@@ -79,6 +81,10 @@ function SortMoviesByGenre() {
         </Grid>
       </Box>
       ;
+      <div>
+        <Trending />
+        <TopRated />
+      </div>
     </>
   );
 }

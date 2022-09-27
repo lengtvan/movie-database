@@ -47,7 +47,7 @@ export default function TopRated() {
   };
   return (
     <>
-      <Typography variant="h2" mt={4} p="16px" ml={8}>
+      <Typography variant="h2"  mx={2} mt={8} p="16px" ml={8}>
         Top-Rated
       </Typography>
       <Box>
@@ -65,7 +65,7 @@ export default function TopRated() {
           {topRated?.results
             .slice(limit * (page - 1), limit * page)
             .map((movie, index) => (
-              <Grid key={movie.id} item xs={3} md={2} lg={1}>
+              <Grid key={movie.id} item xs={1} sm={2}>
                 <MovCard movie={movie} />
               </Grid>
             ))}

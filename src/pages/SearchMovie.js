@@ -34,7 +34,7 @@ function SearchMovie() {
   return (
     <>
       <div>
-        <Typography variant="h2" mt={4} p="16px" ml={8}>
+        <Typography variant="h2" mt={12} p="16px" ml={8}v>
           You are looking for...
         </Typography>
         <Stack

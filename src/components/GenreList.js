@@ -140,15 +140,15 @@ export default function Genre() {
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <Typography
-            variant="h6"
+           variant="h4" 
             noWrap
-            sx={{ flexGrow: 1, cursor: "pointer" }}
+            sx={{ flexGrow: 1, cursor: "pointer"}}
             component="div"
             // onClick={() => {
             //   navigate(`/`);
             // }}
           >
-            Movie Database{" "}
+            Popcorn Cinema{" "}
           </Typography>
           <Search>
             <SearchIconWrapper>

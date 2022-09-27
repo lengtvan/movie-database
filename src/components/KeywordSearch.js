@@ -51,7 +51,7 @@ function SearchMoviesByKeyword() {
   };
   return (
     <div>
-      <Typography variant="h2" mt={4} p="16px" ml={8}>
+      <Typography variant="h2" mt={12} p="16px" ml={8}>
         {keyword.toUpperCase()}
       </Typography>
       <Box>
@@ -61,7 +61,7 @@ function SearchMoviesByKeyword() {
           mt={1}
           sx={{ display: "flex", flexWrap: "wrap" }}
         >
-          <Grid item xs={1} md={1} lg={0.75} onClick={turnPrevPage}>
+          <Grid item xs={1} lg={0.75} onClick={turnPrevPage}>
             <ArrowLeftIcon
               sx={{ height: "100%", width: "100%", cursor: "pointer" }}
             />
@@ -69,11 +69,11 @@ function SearchMoviesByKeyword() {
           {movies?.results
             .slice(limit * (page - 1), limit * page)
             .map((movie, index) => (
-              <Grid key={movie.id} item xs={3} md={2} lg={1}>
+              <Grid key={movie.id} item xs={1} sm={2}>
                 <MovCard movie={movie} />
               </Grid>
             ))}
-          <Grid item xs={1} md={1} lg={0.75} onClick={turnNextPage}>
+          <Grid item xs={1}  lg={0.75} onClick={turnNextPage}>
             <ArrowRightIcon
               sx={{ height: "100%", width: "100%", cursor: "pointer" }}
             />
