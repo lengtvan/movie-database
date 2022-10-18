@@ -1,9 +1,11 @@
 import { createContext, useState } from "react";
-
+import { BASE_URL } from "../app/config";
+import { API_KEY } from "../app/config";
 const MovContext = createContext();
 
 function MovProvider({ children }) {
   const [movies, setMovies] = useState();
+  const [trendingMovies, setTrendingMovies] = useState();
   const [topRated, setTopRated] = useState();
   const [movie, setMovie] = useState();
   const [loading, setLoading] = useState(true);
@@ -13,7 +15,7 @@ function MovProvider({ children }) {
   const [q, setQ] = useState("");
   const [keywords, setKeywords] = useState();
   const [keyword, setKeyword] = useState();
-  const api_key = "3cc306d5e8c5f16471bd3b79122e0e60";
+
   return (
     <MovContext.Provider
       value={{
@@ -21,6 +23,8 @@ function MovProvider({ children }) {
         setChosenGenre,
         movies,
         setMovies,
+        trendingMovies,
+        setTrendingMovies,
         movie,
         setMovie,
         loading,
@@ -29,7 +33,8 @@ function MovProvider({ children }) {
         setError,
         genres,
         setGenres,
-        api_key,
+        API_KEY,
+        BASE_URL,
         q,
         setQ,
         keywords,

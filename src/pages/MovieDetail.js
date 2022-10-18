@@ -8,15 +8,16 @@ import { useEffect } from "react";
 import apiService from "../app/APIservice";
 import useMov from "../hooks/useMov";
 import { Chip } from "@mui/material";
+import { API_KEY } from "../app/config";
 function DetailPage() {
   let params = useParams();
   let movieID = params.movieID;
-  const { movie, setMovie, api_key } = useMov();
+  const { movie, setMovie } = useMov();
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await apiService.get(
-          `movie/${movieID}?api_key=${api_key}`
+          `movie/${movieID}?api_key=${API_KEY}`
         );
         console.log(response);
         setMovie(response.data);
@@ -25,7 +26,7 @@ function DetailPage() {
       }
     };
     fetchData();
-  }, [api_key, movieID]);
+  }, [movieID]);
   return (
     <div>
       <Card

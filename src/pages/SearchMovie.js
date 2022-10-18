@@ -8,20 +8,21 @@ import { useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import apiService from "../app/APIservice";
 import useMov from "../hooks/useMov";
+import { API_KEY } from "../app/config";
 
 function SearchMovie() {
   const location = useLocation();
   const [searchParams] = useSearchParams();
   console.log(searchParams);
   let q = searchParams.get("q");
-  const { api_key, setError, keywords, setKeywords, setKeyword } = useMov();
-  console.log(api_key);
+  const { setError, keywords, setKeywords, setKeyword } = useMov();
+
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await apiService.get(
-          `search/keyword?api_key=${api_key}&query=${q}&page=1`
+          `search/keyword?api_key=${API_KEY}&query=${q}&page=1`
         );
         setKeywords(response.data.results);
       } catch (error) {
@@ -30,11 +31,11 @@ function SearchMovie() {
       }
     };
     fetchData();
-  });
+  }, [q]);
   return (
     <>
       <div>
-        <Typography variant="h2" mt={12} p="16px" ml={8}v>
+        <Typography variant="h2" mt={12} p="16px" ml={8} v>
           You are looking for...
         </Typography>
         <Stack

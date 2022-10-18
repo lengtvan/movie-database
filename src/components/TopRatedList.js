@@ -9,16 +9,17 @@ import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { useState } from "react";
 import { Box } from "@mui/material";
+import { API_KEY } from "../app/config";
 
 export default function TopRated() {
-  const { topRated, setTopRated, setError, setLoading, api_key } = useMov();
+  const { topRated, setTopRated, setError, setLoading } = useMov();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
         const response = await apiService.get(
-          `movie/top_rated?api_key=${api_key}&language=en-US&page=1`
+          `movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
         );
         console.log(response.data);
         setTopRated(response.data);
@@ -30,7 +31,7 @@ export default function TopRated() {
       setLoading(false);
     };
     fetchData();
-  }, [api_key]);
+  }, []);
   const [page, setPage] = useState(1);
   let limit = 5;
   const movLength = topRated?.results.length;
@@ -47,7 +48,7 @@ export default function TopRated() {
   };
   return (
     <>
-      <Typography variant="h2"  mx={2} mt={8} p="16px" ml={8}>
+      <Typography variant="h2" mx={2} mt={8} p="16px" ml={8}>
         Top-Rated
       </Typography>
       <Box>
@@ -55,7 +56,7 @@ export default function TopRated() {
           container
           spacing={2}
           mt={1}
-          sx={{ display: "flex", flexWrap: "wrap" }}
+          sx={{ display: "flex", flexWrap: "wrap", xs: "column", md: "row" }}
         >
           <Grid item xs={1} md={1} lg={0.75} onClick={turnPrevPage}>
             <ArrowLeftIcon

@@ -10,9 +10,10 @@ import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import MovCard from "./MovieCard";
 import { Grid } from "@mui/material";
+import { API_KEY } from "../app/config";
 
 function SearchMoviesByKeyword() {
-  const { movies, setMovies, setError, setLoading, api_key, keyword } =
+  const { movies, setMovies, setError, setLoading, keyword } =
     useMov();
   const [searchParams] = useSearchParams();
   console.log(searchParams);
@@ -23,9 +24,8 @@ function SearchMoviesByKeyword() {
       try {
         setLoading(true);
         const response = await apiService.get(
-          `keyword/${q}/movies?api_key=${api_key}&language=en-US&include_adult=false`
+          `keyword/${q}/movies?api_key=${API_KEY}&language=en-US&include_adult=false`
         );
-        console.log(response.data);
         setMovies(response.data);
       } catch (error) {
         console.log(error);
@@ -34,7 +34,7 @@ function SearchMoviesByKeyword() {
       setLoading(false);
     };
     fetchData();
-  }, [api_key, q, setError, setLoading, setMovies]);
+  }, [q, setError, setLoading, setMovies]);
   const [page, setPage] = useState(1);
   let limit = 4;
   const movLength = movies?.length;
@@ -73,7 +73,7 @@ function SearchMoviesByKeyword() {
                 <MovCard movie={movie} />
               </Grid>
             ))}
-          <Grid item xs={1}  lg={0.75} onClick={turnNextPage}>
+          <Grid item xs={1} lg={0.75} onClick={turnNextPage}>
             <ArrowRightIcon
               sx={{ height: "100%", width: "100%", cursor: "pointer" }}
             />

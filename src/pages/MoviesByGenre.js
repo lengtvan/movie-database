@@ -12,17 +12,17 @@ import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import TopRated from "../components/TopRatedList";
 import Trending from "../components/TrendingList";
+import { API_KEY } from "../app/config";
 
 function SortMoviesByGenre() {
   let params = useParams();
   let genreID = params.genreID;
-  const { movies, setMovies, api_key, setError, chosenGenre } = useMov();
-  console.log(api_key);
+  const { movies, setMovies, setError, chosenGenre } = useMov();
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await apiService.get(
-          `discover/movie?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreID}&with_watch_monetization_types=flatrate`
+          `discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreID}&with_watch_monetization_types=flatrate`
         );
         console.log(genreID);
         console.log(response.data);
@@ -34,7 +34,7 @@ function SortMoviesByGenre() {
       }
     };
     fetchData();
-  }, [setMovies, genreID, api_key, chosenGenre, setError]);
+  }, [setMovies, genreID, chosenGenre, setError]);
   const [page, setPage] = useState(1);
   let limit = 5;
   const movLength = movies?.results.length;

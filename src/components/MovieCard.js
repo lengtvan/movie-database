@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { useLocation } from "react-router-dom";
+import { API_KEY } from "../app/config";
 
 function MovCard({ movie }) {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function MovCard({ movie }) {
         navigate(`/movie/${movie.id}`, { state: { from: location } })
       }
     >
-      <ImageListItem key={movie.id} sx={{ width:"auto" }}>
+      <ImageListItem key={movie.id} sx={{ width: "auto" }}>
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt={movie.title}
@@ -24,14 +25,14 @@ function MovCard({ movie }) {
         <ImageListItemBar
           title={movie.title}
           subtitle={movie.overview}
-          // actionIcon={
-          //   <IconButton
-          //     sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-          //     aria-label={`info about ${item.title}`}
-          //   >
-          //     <InfoIcon />
-          //   </IconButton>
-          // }
+        // actionIcon={
+        //   <IconButton
+        //     sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+        //     aria-label={`info about ${item.title}`}
+        //   >
+        //     <InfoIcon />
+        //   </IconButton>
+        // }
         />
       </ImageListItem>
 

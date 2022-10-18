@@ -10,19 +10,20 @@ import { useState } from "react";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { Box } from "@mui/material";
+import { API_KEY } from "../app/config";
 
 export default function Trending() {
-  const { movies, setMovies, setError, setLoading } = useMov();
+  const { trendingMovies, setTrendingMovies, setError, setLoading } = useMov();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
         const response = await apiService.get(
-          "trending/movie/day?api_key=3cc306d5e8c5f16471bd3b79122e0e60"
+          `trending/movie/day?api_key=${API_KEY}`
         );
         console.log(response.data);
-        setMovies(response.data);
+        setTrendingMovies(response.data);
         setError("");
       } catch (error) {
         console.log(error);
@@ -34,7 +35,7 @@ export default function Trending() {
   }, []);
   const [page, setPage] = useState(1);
   let limit = 5;
-  const movLength = movies?.results.length;
+  const movLength = trendingMovies?.results.length;
   console.log(movLength);
   const turnNextPage = () => {
     if (limit * (page + 1) < movLength) {
@@ -64,7 +65,7 @@ export default function Trending() {
               sx={{ height: "100%", width: "100%", cursor: "pointer" }}
             />
           </Grid>
-          {movies?.results
+          {trendingMovies?.results
             .slice(limit * (page - 1), limit * page)
             .map((movie, index) => (
               <Grid key={movie.id} item xs={1} sm={2} >

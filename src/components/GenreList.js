@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { useLocation } from "react-router-dom";
+import { API_KEY } from "../app/config";
 export default function Genre() {
   const { genres, setGenres, setChosenGenre, chosenGenre } = useMov();
   const navigate = useNavigate();
@@ -28,8 +29,9 @@ export default function Genre() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log(API_KEY)
         const response = await apiService.get(
-          "/genre/movie/list?api_key=3cc306d5e8c5f16471bd3b79122e0e60&language=en-US"
+          `/genre/movie/list?api_key=${API_KEY}&language=en-US`
         );
         setGenres(response.data.genres);
         console.log(response.data);
@@ -140,13 +142,15 @@ export default function Genre() {
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <Typography
-           variant="h4" 
+            variant="h3"
             noWrap
-            sx={{ flexGrow: 1, cursor: "pointer"}}
+            sx={{ flexGrow: 1, cursor: "pointer" }}
             component="div"
-            // onClick={() => {
-            //   navigate(`/`);
-            // }}
+            onClick={() => {
+              navigate(`/`, {
+                state: { from: location },
+              });
+            }}
           >
             Popcorn Cinema{" "}
           </Typography>
